@@ -11,7 +11,6 @@ window.addEventListener('load', function() {
 
   subBtn.addEventListener('click',
     function() {
-    console.log("OYOYOYO")
       subBtn.disabled = true;
       if (isPushEnabled) {
         return unsubscribe(registration);
@@ -54,11 +53,17 @@ window.addEventListener('load', function() {
     }
 
     // Check if push messaging is supported
-    if (!('PushManager' in window)) {
+    if (!('PushManager' in window) && !('safari' in window)) {
       // Show a message and activate the button
       subBtn.disabled = false;
       showMessage(gettext('Push notifications are not available in your browser.'));
       return;
+    }
+
+    if ('safari' in window) {
+        console.log("Safari!!")
+    } else {
+        console.log("Not Safari :(")
     }
 
     // We need to get subscription state for push notifications and send the information to server
