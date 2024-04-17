@@ -61,6 +61,7 @@ window.addEventListener('load', function() {
     }
 
     if ('safari' in window) {
+        window.PushManager = window.safari.pushNotification;
         console.log("Safari!!");
         console.dir(reg);
     } else {
