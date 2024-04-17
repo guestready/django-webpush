@@ -11,6 +11,7 @@ window.addEventListener('load', function() {
 
   subBtn.addEventListener('click',
     function() {
+    console.log("OYOYOYO")
       subBtn.disabled = true;
       if (isPushEnabled) {
         return unsubscribe(registration);
