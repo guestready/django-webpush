@@ -62,10 +62,6 @@ window.addEventListener('load', function() {
 
     if ('safari' in window) {
         window.PushManager = window.safari.pushNotification;
-        console.log("Safari!!");
-        console.dir(reg);
-    } else {
-        console.log("Not Safari :(")
     }
 
     // We need to get subscription state for push notifications and send the information to server
