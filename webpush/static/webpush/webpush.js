@@ -61,7 +61,8 @@ window.addEventListener('load', function() {
     }
 
     if ('safari' in window) {
-        console.log("Safari!!")
+        console.log("Safari!!");
+        console.dir(reg);
     } else {
         console.log("Not Safari :(")
     }
