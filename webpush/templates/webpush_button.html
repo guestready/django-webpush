@@ -1,6 +1,9 @@
 {% if user.is_authenticated or group %}
+  <input type="hidden" id="subscribeLabel" name="subscribeLabel" value="{{subscribe_label}}">
+  <input type="hidden" id="unsubscribeLabel" name="unsubscribeLabel" value="{{unsubscribe_label}}">
+  <input type="hidden" id="successLabel" name="successLabel" value="{{success_label}}">
   <button id="webpush-subscribe-button" {% if class %}class="{{ class }}"{% endif %} {% if group %}data-group="{{ group }}"{% endif %} data-url="{{ webpush_save_url }}">
-    {{ label }}
+    {{ subscribe_label }}
   </button>
   <div id="webpush-message" hidden></div>
 {% endif %}

@@ -6,8 +6,11 @@ var isPushEnabled = false,
 
 window.addEventListener('load', function() {
   subBtn = document.getElementById('webpush-subscribe-button');
+  subscribeLabel = document.getElementById('subscribeLabel');
+  unsubscribeLabel = document.getElementById('unsubscribeLabel');
+  successLabel = document.getElementById('successLabel');
 
-  subBtn.textContent = gettext('Subscribe to Push Messaging');
+  subBtn.textContent = subscribeLabel.value
 
   subBtn.addEventListener('click',
     function() {
@@ -73,10 +76,10 @@ window.addEventListener('load', function() {
               // Check the information is saved successfully into server
               if (response.status === 201) {
                 // Show unsubscribe button instead
-                subBtn.textContent = gettext('Unsubscribe from Push Messaging');
+                subBtn.textContent = unsubscribeLabel.value;
                 subBtn.disabled = false;
                 isPushEnabled = true;
-                showMessage(gettext('Successfully subscribed to push notifications.'));
+                showMessage(successLabel.value);
               }
             });
         }
@@ -120,10 +123,10 @@ function subscribe(reg) {
                 // Check the information is saved successfully into server
                 if (response.status === 201) {
                   // Show unsubscribe button instead
-                  subBtn.textContent = gettext('Unsubscribe from Push Messaging');
+                  subBtn.textContent = unsubscribeLabel.value;
                   subBtn.disabled = false;
                   isPushEnabled = true;
-                  showMessage(gettext('Successfully subscribed to push notifications.'));
+                  showMessage(successLabel.value);
                 }
               });
           })
@@ -173,15 +176,15 @@ function unsubscribe(reg) {
               subscription.unsubscribe()
                 .then(
                   function(successful) {
-                    subBtn.textContent = gettext('Subscribe to Push Messaging');
-                    showMessage(gettext('Successfully unsubscribed from push notifications.'));
+                    subBtn.textContent = subscribeLabel.value;
+                    showMessage(successLabel.value);
                     isPushEnabled = false;
                     subBtn.disabled = false;
                   }
                 )
                 .catch(
                   function(error) {
-                    subBtn.textContent = gettext('Unsubscribe from Push Messaging');
+                    subBtn.textContent = unsubscribeLabel.value;
                     showMessage(gettext('Error while unsubscribing from push notifications.'));
                     subBtn.disabled = false;
                   }
